@@ -6,7 +6,7 @@ interface Props {
     production?: boolean;
 }
 
-const WinterCheckoutModal: React.FC<Props> = ({
+const WinterCheckout: React.FC<Props> = ({
     projectId,
     showModal = false,
     production = true,
