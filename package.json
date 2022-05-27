@@ -1,7 +1,28 @@
 {
     "name": "@usewinter/checkout",
-    "version": "0.0.1",
+    "version": "0.1.0",
+    "description": "Integrate Winter's NFT checkout with this React component",
+    "author": "lailachima",
+    "keywords": [
+        "react",
+        "components",
+        "ui"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/winter-crypto/checkout-package.git"
+    },
     "dependencies": {
+        "@babel/polyfill": "^7.12.1",
         "react": "^17.0.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.17.10",
+        "@babel/core": "^7.18.2",
+        "@babel/preset-env": "^7.18.2",
+        "@babel/preset-typescript": "^7.17.12"
+    },
+    "scripts": {
+        "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
     }
 }
