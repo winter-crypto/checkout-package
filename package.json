@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "description": "Integrate Winter's NFT checkout with this React component",
     "author": "lailachima",
+    "private": false,
     "keywords": [
         "react",
         "components",
