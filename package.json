@@ -9,6 +9,12 @@
         "components",
         "ui"
     ],
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/winter-crypto/checkout-package.git"
