@@ -1,29 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-interface Props {
-    projectId: Number;
-    showModal?: boolean;
-    production?: boolean;
-}
-
-const WinterCheckout: React.FC<Props> = ({
-    projectId,
-    showModal = false,
-    production = true,
-}) => {
-    const [openModal, setOpenModal] = useState(showModal);
+const WinterCheckout = (props) => {
+    const [openModal, setOpenModal] = useState(false);
     const [projectUrl, setProjectUrl] = useState('');
 
     useEffect(() => {
-        setOpenModal(showModal);
-    }, [showModal]);
+        setOpenModal(props.showModal);
+    }, [props.showModal]);
 
     useEffect(() => {
-        const url = production ?
-            'https://checkout.usewinter.com/?projectId=' + projectId :
-            'https://sandbox-winter-checkout.onrender.com/?projectId=' + projectId;
+        const url = props.production ?
+            'https://checkout.usewinter.com/?projectId=' + props.projectId :
+            'https://sandbox-winter-checkout.onrender.com/?projectId=' + props.projectId;
         setProjectUrl(url);
-    })
+    }, [props.projectId, props.production])
 
     window.addEventListener('message', (event) => {
         if (event.data == 'closeWinterCheckoutModal') {
