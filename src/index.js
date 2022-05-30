@@ -1,3 +1,3 @@
 import WinterCheckout from './components/WinterCheckout';
 
-export default { WinterCheckout };
+export { WinterCheckout };
