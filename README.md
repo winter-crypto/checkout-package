@@ -1,4 +1,4 @@
-# checkout-package
+# @usewinter/checkout
 :rocket::rocket:  React package to integrate Winter checkout :rocket::rocket:
 
 Installation
