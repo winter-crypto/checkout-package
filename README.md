@@ -1,7 +1,20 @@
 # checkout-package
-React package to integrate the Winter checkout modal into your frontend. 
+:rocket::rocket:  React package to integrate Winter checkout :rocket::rocket:
 
+Installation
 ```
+npm i @usewinter/checkout
+
+OR 
+
+yarn add @usewinter/checkout
+```
+
+Usage in your react app
+```
+import { WinterCheckout } from '@usewinter/checkout';
+
+
 <WinterCheckout projectId={YOUR_PROJECT_ID} production={false} showModal={showWinter} />
 ```
 
