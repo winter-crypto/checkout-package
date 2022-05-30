@@ -15,7 +15,11 @@ Usage in your react app
 import { WinterCheckout } from '@usewinter/checkout';
 
 
-<WinterCheckout projectId={YOUR_PROJECT_ID} production={false} showModal={showWinter} />
+<WinterCheckout 
+  projectId={YOUR_PROJECT_ID} 
+  production={false} 
+  showModal={showWinter} 
+/>
 ```
 
 ### Params:
