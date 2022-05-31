@@ -9,11 +9,19 @@ const WinterCheckout = (props) => {
     }, [props.showModal]);
 
     useEffect(() => {
+        let queryString = 'projectId=' + props.projectId;
+        if (props.walletAddress != null) {
+            queryString += '&walletAddress=' + props.walletAddress;
+        }
+        if (props.email != null) {
+            queryString += '&email=' + props.email;
+        }
+
         const url = props.production ?
-            'https://checkout.usewinter.com/?projectId=' + props.projectId :
-            'https://sandbox-winter-checkout.onrender.com/?projectId=' + props.projectId;
+            'https://checkout.usewinter.com/?' + queryString :
+            'https://sandbox-winter-checkout.onrender.com/?' + queryString;
         setProjectUrl(url);
-    }, [props.projectId, props.production])
+    }, [props.projectId, props.production, props.walletAddress, props.email])
 
     window.addEventListener('message', (event) => {
         if (event.data == 'closeWinterCheckoutModal') {
