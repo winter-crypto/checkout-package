@@ -19,9 +19,9 @@
         "type": "git",
         "url": "git+https://github.com/winter-crypto/checkout-package.git"
     },
-    "dependencies": {
-        "@babel/polyfill": "^7.12.1",
-        "react": "^17.0.2"
+    "peerDependencies": {
+        "react": ">=16.13.1",
+        "@babel/polyfill": ">=7.00.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.17.10",
