@@ -26,11 +26,13 @@ const WinterCheckout = (props) => {
         setProjectUrl(url);
     }, [props.projectId, props.production, props.walletAddress, props.email])
 
-    window.addEventListener('message', (event) => {
-        if (event.data == 'closeWinterCheckoutModal') {
-            setOpenModal(false);
-        }
-    });
+    if (typeof window !== 'undefined') {
+        window.addEventListener('message', (event) => {
+            if (event.data == 'closeWinterCheckoutModal') {
+                setOpenModal(false);
+            }
+        });
+    }
 
     return openModal ? (
         <iframe
