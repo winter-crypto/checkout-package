@@ -25,6 +25,9 @@ const WinterCheckout = (props) => {
         if (props.erc1155Video != null) {
             queryString += '&erc1155Video=' + props.erc1155Video;
         }
+        if (props.title != null) {
+            queryString += '&title=' + props.title
+        }
 
         const url = props.production ?
             'https://checkout.usewinter.com/?' + queryString :
