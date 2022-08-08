@@ -31,6 +31,9 @@ const WinterCheckout = (props) => {
         if (props.extraMintParams != null) {
             queryString += `&extraMintParams=${encodeURIComponent(JSON.stringify(props.extraMintParams))}`
         }
+        if (props.priceFunctionParams != null) {
+            queryString += `&priceFunctionParams=${encodeURIComponent(JSON.stringify(props.priceFunctionParams))}`
+        }
 
         const url = props.production ?
             'https://checkout.usewinter.com/?' + queryString :
