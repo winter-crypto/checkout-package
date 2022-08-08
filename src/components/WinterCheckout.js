@@ -19,9 +19,6 @@ const WinterCheckout = (props) => {
         if (props.mintQuantity != null) {
             queryString += '&mintQuantity=' + props.mintQuantity;
         }
-        if (props.erc1155TokenId != null) {
-            queryString += '&erc1155TokenId=' + props.erc1155TokenId;
-        }
         if (props.erc1155Video != null) {
             queryString += '&erc1155Video=' + props.erc1155Video;
         }
