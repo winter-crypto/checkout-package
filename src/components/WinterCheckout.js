@@ -36,7 +36,7 @@ const WinterCheckout = (props) => {
             'https://checkout.usewinter.com/?' + queryString :
             'https://sandbox-winter-checkout.onrender.com/?' + queryString;
         setProjectUrl(url);
-    }, [props.projectId, props.production, props.walletAddress, props.email])
+    }, [props.projectId, props.production, props.walletAddress, props.email, props.mintQuantity, props.extraMintParams, props.priceFunctionParams, props.title, props.erc1155Video])
 
     if (typeof window !== 'undefined') {
         window.addEventListener('message', (event) => {
