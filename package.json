@@ -1,35 +1,39 @@
 {
-    "name": "@usewinter/checkout",
-    "version": "0.1.5",
-    "description": "Integrate Winter's NFT checkout with this React component",
-    "author": "lailachima",
-    "private": false,
-    "keywords": [
-        "react",
-        "components",
-        "ui"
-    ],
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "files": [
-        "dist",
-        "README.md"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/winter-crypto/checkout-package.git"
-    },
-    "peerDependencies": {
-        "react": ">=16.13.1",
-        "@babel/polyfill": ">=7.12.1"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.17.10",
-        "@babel/core": "^7.18.2",
-        "@babel/preset-env": "^7.18.2",
-        "@babel/preset-react": "7.12.13"
-    },
-    "scripts": {
-        "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
-    }
+  "name": "@usewinter/checkout",
+  "version": "0.1.5",
+  "description": "Integrate Winter's NFT checkout with this React component",
+  "author": "lailachima",
+  "private": false,
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winter-crypto/checkout-package.git"
+  },
+  "peerDependencies": {
+    "@babel/polyfill": ">=7.12.1",
+    "react": ">=16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "7.12.13",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files"
+  }
 }

@@ -1,73 +1,122 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-const WinterCheckout = (props) => {
-    const [openModal, setOpenModal] = useState(false);
-    const [projectUrl, setProjectUrl] = useState('');
+const WinterCheckout = ({
+  onSuccess,
+  onClose,
+  projectId,
+  showModal,
+  walletAddress,
+  email,
+  mintQuantity,
+  erc1155Video,
+  title,
+  brandImage,
+  extraMintParams,
+  priceFunctionParams,
+  production,
+  testnet,
+}) => {
+  const [projectUrl, setProjectUrl] = useState("");
 
-    useEffect(() => {
-        setOpenModal(props.showModal);
-    }, [props.showModal]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleWindowEvent = (e) => {
+        const { data } = e;
+        if (typeof data === "string") {
+          if (data.name === "closeWinterCheckoutModal") {
+            onClose?.();
+          }
+        } else {
+          if (data.name === "closeWinterCheckoutModal") {
+            onClose?.();
+          } else if (data.name === "successfulWinterCheckout") {
+            onClose?.();
+            const {
+              transactionhash,
+              email,
+              nftQuantity,
+              amountUSD,
+              nftTokenIds,
+              nftUrls,
+              openseaUrls,
+            } = data;
+            onSuccess?.(
+              transactionhash,
+              email,
+              nftQuantity,
+              amountUSD,
+              nftTokenIds,
+              nftUrls,
+              openseaUrls
+            );
+          }
+        }
+      };
+      window.addEventListener("message", handleWindowEvent);
+      return () => window.removeEventListener("message", handleWindowEvent);
+    }
+  }, [onClose, onSuccess]);
 
-    useEffect(() => {
-        let queryString = 'projectId=' + props.projectId;
-        if (props.walletAddress != null) {
-            queryString += '&walletAddress=' + props.walletAddress;
-        }
-        if (props.email != null) {
-            queryString += '&email=' + props.email;
-        }
-        if (props.mintQuantity != null) {
-            queryString += '&mintQuantity=' + props.mintQuantity;
-        }
-        if (props.erc1155Video != null) {
-            queryString += '&erc1155Video=' + props.erc1155Video;
-        }
-        if (props.title != null) {
-            queryString += '&title=' + props.title
-        }
-        if (props.extraMintParams != null) {
-            queryString += `&extraMintParams=${encodeURIComponent(JSON.stringify(props.extraMintParams))}`
-        }
-        if (props.priceFunctionParams != null) {
-            queryString += `&priceFunctionParams=${encodeURIComponent(JSON.stringify(props.priceFunctionParams))}`
-        }
-
-        const url = props.production ?
-            'https://checkout.usewinter.com/?' + queryString :
-            'https://sandbox-winter-checkout.onrender.com/?' + queryString;
-        setProjectUrl(url);
-    }, [props.projectId, props.production, props.walletAddress, props.email, props.mintQuantity, props.extraMintParams, props.priceFunctionParams, props.title, props.erc1155Video])
-
-    if (typeof window !== 'undefined') {
-        window.addEventListener('message', (event) => {
-            if (event.data == 'closeWinterCheckoutModal') {
-                setOpenModal(false);
-            }
-        });
+  useEffect(() => {
+    let queryString = "projectId=" + projectId;
+    if (walletAddress != null) {
+      queryString += "&walletAddress=" + walletAddress;
+    }
+    if (email != null) {
+      queryString += "&email=" + email;
+    }
+    if (mintQuantity != null) {
+      queryString += "&mintQuantity=" + mintQuantity;
+    }
+    if (erc1155Video != null) {
+      queryString += "&erc1155Video=" + erc1155Video;
+    }
+    if (title != null) {
+      queryString += "&title=" + title;
+    }
+    if (brandImage) {
+      queryString += `&brandImage=${encodeURIComponent(brandImage)}`;
+    }
+    if (extraMintParams != null) {
+      queryString += `&extraMintParams=${encodeURIComponent(
+        JSON.stringify(extraMintParams)
+      )}`;
+    }
+    if (priceFunctionParams != null) {
+      queryString += `&priceFunctionParams=${encodeURIComponent(
+        JSON.stringify(priceFunctionParams)
+      )}`;
     }
 
-    return openModal ? (
-        <iframe
-            id='winter-checkout'
-            src={projectUrl}
-            style={{
-                position: 'fixed',
-                top: '0px',
-                bottom: '0px',
-                right: '0px',
-                width: '100%',
-                border: 'none',
-                margin: 0,
-                padding: 0,
-                overflow: 'hidden',
-                zIndex: 999999,
-                height: '100%',
-            }
-            }
-        > </iframe>
-    ) : (
-            <></>
-        );
+    const url = production
+      ? "https://checkout.usewinter.com/?" + queryString
+      : testnet === "goerli"
+      ? "https://goerli-sandbox-api.onrender.com/?"
+      : "https://sandbox-winter-checkout.onrender.com/?" + queryString;
+    setProjectUrl(url);
+  }, [
+    projectId,
+    production,
+    walletAddress,
+    email,
+    mintQuantity,
+    extraMintParams,
+    priceFunctionParams,
+    title,
+    erc1155Video,
+    brandImage,
+    title,
+  ]);
+
+  return showModal ? (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `<iframe id="winter-checkout" src="${projectUrl}" style="position: fixed; top: 0px; bottom: 0px; right: 0px; width: 100%; border: none; margin: 0px; padding: 0px; overflow: hidden; z-index: 999999; height: 100%;" />`,
+      }}
+    />
+  ) : (
+    <></>
+  );
 };
 
 export default WinterCheckout;

@@ -1,3 +1,3 @@
-import WinterCheckout from './components/WinterCheckout';
+import WinterCheckout from "./components/WinterCheckout";
 
 export { WinterCheckout };
