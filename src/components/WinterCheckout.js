@@ -22,34 +22,28 @@ const WinterCheckout = ({
     if (typeof window !== "undefined") {
       const handleWindowEvent = (e) => {
         const { data } = e;
-        if (typeof data === "string") {
-          if (data.name === "closeWinterCheckoutModal") {
-            onClose?.();
-          }
-        } else {
-          if (data.name === "closeWinterCheckoutModal") {
-            onClose?.();
-          } else if (data.name === "successfulWinterCheckout") {
-            onClose?.();
-            const {
-              transactionhash,
-              email,
-              nftQuantity,
-              amountUSD,
-              nftTokenIds,
-              nftUrls,
-              openseaUrls,
-            } = data;
-            onSuccess?.(
-              transactionhash,
-              email,
-              nftQuantity,
-              amountUSD,
-              nftTokenIds,
-              nftUrls,
-              openseaUrls
-            );
-          }
+        if (data === "closeWinterCheckoutModal") {
+          onClose?.();
+        } else if (data.name === "successfulWinterCheckout") {
+          onClose?.();
+          const {
+            transactionhash,
+            email,
+            nftQuantity,
+            amountUSD,
+            nftTokenIds,
+            nftUrls,
+            openseaUrls,
+          } = data;
+          onSuccess?.(
+            transactionhash,
+            email,
+            nftQuantity,
+            amountUSD,
+            nftTokenIds,
+            nftUrls,
+            openseaUrls
+          );
         }
       };
       window.addEventListener("message", handleWindowEvent);
@@ -75,7 +69,7 @@ const WinterCheckout = ({
       queryString += "&title=" + title;
     }
     if (brandImage) {
-      queryString += `&brandImage=${encodeURIComponent(brandImage)}`;
+      queryString += `&brandImage=${brandImage}`;
     }
     if (extraMintParams != null) {
       queryString += `&extraMintParams=${encodeURIComponent(
@@ -91,7 +85,7 @@ const WinterCheckout = ({
     const url = production
       ? "https://checkout.usewinter.com/?" + queryString
       : testnet === "goerli"
-      ? "https://goerli-sandbox-api.onrender.com/?"
+      ? "https://goerli-sandbox-checkout.onrender.com/?" + queryString
       : "https://sandbox-winter-checkout.onrender.com/?" + queryString;
     setProjectUrl(url);
   }, [
