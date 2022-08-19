@@ -25,7 +25,6 @@ const WinterCheckout = ({
         if (data === "closeWinterCheckoutModal") {
           onClose?.();
         } else if (data.name === "successfulWinterCheckout") {
-          onClose?.();
           const {
             transactionhash,
             email,
