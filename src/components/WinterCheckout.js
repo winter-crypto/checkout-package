@@ -67,6 +67,9 @@ const WinterCheckout = ({
     if (title != null) {
       queryString += "&title=" + title;
     }
+    if (language) {
+      queryString += "&language=" + language;
+    }
     if (brandImage) {
       queryString += `&brandImage=${brandImage}`;
     }
