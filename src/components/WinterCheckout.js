@@ -15,6 +15,7 @@ const WinterCheckout = ({
   priceFunctionParams,
   production,
   testnet,
+  language,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -102,6 +103,7 @@ const WinterCheckout = ({
     erc1155Video,
     brandImage,
     title,
+    language,
   ]);
 
   return showModal ? (
