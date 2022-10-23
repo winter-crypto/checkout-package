@@ -16,6 +16,7 @@ const WinterCheckout = ({
   production,
   testnet,
   language,
+  appearance,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -84,6 +85,11 @@ const WinterCheckout = ({
         JSON.stringify(priceFunctionParams)
       )}`;
     }
+    if (appearance != null) {
+      queryString += `&appearance=${encodeURIComponent(
+        JSON.stringify(appearance)
+      )}`;
+    }
 
     const url = production
       ? "https://checkout.usewinter.com/?" + queryString
@@ -99,6 +105,7 @@ const WinterCheckout = ({
     mintQuantity,
     extraMintParams,
     priceFunctionParams,
+    appearance,
     title,
     erc1155Video,
     brandImage,
