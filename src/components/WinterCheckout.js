@@ -93,8 +93,6 @@ const WinterCheckout = ({
 
     const url = production
       ? "https://checkout.usewinter.com/?" + queryString
-      : testnet === "goerli"
-      ? "https://goerli-sandbox-checkout.onrender.com/?" + queryString
       : "https://sandbox-winter-checkout.onrender.com/?" + queryString;
     setProjectUrl(url);
   }, [
@@ -116,7 +114,7 @@ const WinterCheckout = ({
   return showModal ? (
     <div
       dangerouslySetInnerHTML={{
-        __html: `<iframe id="winter-checkout" src="${projectUrl}" style="position: fixed; top: 0px; bottom: 0px; right: 0px; width: 100%; border: none; margin: 0px; padding: 0px; overflow: hidden; z-index: 999999; height: 100%;" />`,
+        __html: `<iframe id="winter-checkout" src="${projectUrl}" style="color-scheme: light; position: fixed; top: 0px; bottom: 0px; right: 0px; width: 100%; border: none; margin: 0px; padding: 0px; overflow: hidden; z-index: 999999; height: 100%;" />`,
       }}
     />
   ) : (
