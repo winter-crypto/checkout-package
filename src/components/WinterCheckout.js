@@ -14,9 +14,13 @@ const WinterCheckout = ({
   extraMintParams,
   priceFunctionParams,
   production,
-  testnet,
   language,
   appearance,
+  gentkId,
+  contractAddress,
+  tokenId,
+  fillSource,
+  orderSource,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -28,7 +32,7 @@ const WinterCheckout = ({
           onClose?.();
         } else if (data.name === "successfulWinterCheckout") {
           const {
-            transactionhash,
+            transactionHash,
             email,
             nftQuantity,
             amountUSD,
@@ -37,7 +41,7 @@ const WinterCheckout = ({
             openseaUrls,
           } = data;
           onSuccess?.(
-            transactionhash,
+            transactionHash,
             email,
             nftQuantity,
             amountUSD,
@@ -53,20 +57,32 @@ const WinterCheckout = ({
   }, [onClose, onSuccess]);
 
   useEffect(() => {
-    let queryString = "projectId=" + projectId;
-    if (walletAddress != null) {
+    let queryString = "";
+    if (projectId) {
+      queryString += "projectId=" + projectId;
+    } else if (contractAddress && tokenId) {
+      queryString +=
+        "contractAddress=" + contractAddress + "&tokenId=" + tokenId;
+    }
+    if (walletAddress) {
       queryString += "&walletAddress=" + walletAddress;
     }
-    if (email != null) {
+    if (email) {
       queryString += "&email=" + email;
     }
-    if (mintQuantity != null) {
+    if (mintQuantity) {
       queryString += "&mintQuantity=" + mintQuantity;
     }
-    if (erc1155Video != null) {
+    if (fillSource) {
+      queryString += `&fillSource=` + fillSource;
+    }
+    if (orderSource) {
+      queryString += `&orderSource=` + orderSource;
+    }
+    if (erc1155Video) {
       queryString += "&erc1155Video=" + erc1155Video;
     }
-    if (title != null) {
+    if (title) {
       queryString += "&title=" + title;
     }
     if (language) {
@@ -75,17 +91,20 @@ const WinterCheckout = ({
     if (brandImage) {
       queryString += `&brandImage=${brandImage}`;
     }
-    if (extraMintParams != null) {
+    if (gentkId) {
+      queryString += `&gentkId=${gentkId}`;
+    }
+    if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
         JSON.stringify(extraMintParams)
       )}`;
     }
-    if (priceFunctionParams != null) {
+    if (priceFunctionParams) {
       queryString += `&priceFunctionParams=${encodeURIComponent(
         JSON.stringify(priceFunctionParams)
       )}`;
     }
-    if (appearance != null) {
+    if (appearance) {
       queryString += `&appearance=${encodeURIComponent(
         JSON.stringify(appearance)
       )}`;
@@ -96,19 +115,22 @@ const WinterCheckout = ({
       : "https://sandbox-winter-checkout.onrender.com/?" + queryString;
     setProjectUrl(url);
   }, [
+    onSuccess,
+    onClose,
     projectId,
-    production,
+    showModal,
     walletAddress,
     email,
     mintQuantity,
+    erc1155Video,
+    title,
+    brandImage,
     extraMintParams,
     priceFunctionParams,
-    appearance,
-    title,
-    erc1155Video,
-    brandImage,
-    title,
+    production,
     language,
+    appearance,
+    gentkId,
   ]);
 
   return showModal ? (

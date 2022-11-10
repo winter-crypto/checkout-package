@@ -1,0 +1,23 @@
+import React = require("react");
+declare const WinterCheckout: React.FC<{
+  projectId?: Record<string, string | number | undefined>;
+  showModal?: boolean;
+  contractAddress?: string;
+  tokenId?: string;
+  walletAddress?: string;
+  email?: string;
+  title?: string;
+  brandImage?: string;
+  mintQuantity?: number;
+  extraMintParams?: object;
+  priceFunctionParams?: object;
+  production?: boolean;
+  fillSource?: string;
+  orderSource?: string;
+  language?: string;
+  gentkId?: string;
+  appearance?: Record<string, string | number | undefined>;
+  onClose?: () => void;
+  onSuccess?: (txId: string, email: string) => void;
+}>;
+export default WinterCheckout;
