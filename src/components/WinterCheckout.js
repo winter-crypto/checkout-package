@@ -17,6 +17,7 @@ const WinterCheckout = ({
   language,
   appearance,
   gentkId,
+  assetId,
   contractAddress,
   tokenId,
   fillSource,
@@ -94,6 +95,9 @@ const WinterCheckout = ({
     if (gentkId) {
       queryString += `&gentkId=${gentkId}`;
     }
+    if (assetId) {
+      queryString += `&assetId=${assetId}`;
+    }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
         JSON.stringify(extraMintParams)
@@ -131,6 +135,7 @@ const WinterCheckout = ({
     language,
     appearance,
     gentkId,
+    assetId,
   ]);
 
   return showModal ? (

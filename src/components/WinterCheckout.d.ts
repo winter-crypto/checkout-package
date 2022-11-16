@@ -16,6 +16,7 @@ declare const WinterCheckout: React.FC<{
   orderSource?: string;
   language?: string;
   gentkId?: string;
+  assetId?: string;
   appearance?: Record<string, string | number | undefined>;
   onClose?: () => void;
   onSuccess?: (txId: string, email: string) => void;
