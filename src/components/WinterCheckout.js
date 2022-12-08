@@ -18,6 +18,7 @@ const WinterCheckout = ({
   appearance,
   gentkId,
   assetId,
+  paymentMethod,
   contractAddress,
   tokenId,
   fillSource,
@@ -97,6 +98,9 @@ const WinterCheckout = ({
     }
     if (assetId) {
       queryString += `&assetId=${assetId}`;
+    }
+    if(paymentMethod) {
+      queryString += `&paymentMethod=${paymentMethod}`;
     }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
