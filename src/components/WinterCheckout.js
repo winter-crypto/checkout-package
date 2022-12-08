@@ -64,6 +64,8 @@ const WinterCheckout = ({
     } else if (contractAddress && tokenId) {
       queryString +=
         "contractAddress=" + contractAddress + "&tokenId=" + tokenId;
+    } else if (assetId) {
+      queryString += "assetID=" + assetId;
     }
     if (walletAddress) {
       queryString += "&walletAddress=" + walletAddress;
@@ -94,9 +96,6 @@ const WinterCheckout = ({
     }
     if (gentkId) {
       queryString += `&gentkId=${gentkId}`;
-    }
-    if (assetId) {
-      queryString += `&assetId=${assetId}`;
     }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
