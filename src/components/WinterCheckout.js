@@ -98,9 +98,6 @@ const WinterCheckout = ({
     if (gentkId) {
       queryString += `&gentkId=${gentkId}`;
     }
-    if (assetId) {
-      queryString += `&assetId=${assetId}`;
-    }
     if(paymentMethod) {
       queryString += `&paymentMethod=${paymentMethod}`;
     }
