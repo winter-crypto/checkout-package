@@ -14,6 +14,7 @@ const WinterCheckout = ({
   extraMintParams,
   priceFunctionParams,
   production,
+  dev,
   language,
   appearance,
   gentkId,
@@ -117,9 +118,18 @@ const WinterCheckout = ({
       )}`;
     }
 
-    const url = production
-      ? "https://checkout.usewinter.com/?" + queryString
-      : "https://sandbox-winter-checkout.onrender.com/?" + queryString;
+    var url;
+    if(production) {
+      url = "https://checkout.usewinter.com/?" + queryString
+    } else {
+      if(dev) {
+        url = "https://dev-checkout.onrender.com/?" + queryString;
+      } else {
+        url = "https://sandbox-winter-checkout.onrender.com/?" + queryString;
+      }
+
+    }
+
     setProjectUrl(url);
   }, [
     onSuccess,

@@ -12,6 +12,7 @@ declare const WinterCheckout: React.FC<{
   extraMintParams?: object;
   priceFunctionParams?: object;
   production?: boolean;
+  dev?: boolean;
   fillSource?: string;
   orderSource?: string;
   language?: string;
