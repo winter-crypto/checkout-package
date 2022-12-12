@@ -24,6 +24,8 @@ const WinterCheckout = ({
   tokenId,
   fillSource,
   orderSource,
+  giftingAvailable,
+  giftingNFT,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -99,8 +101,14 @@ const WinterCheckout = ({
     if (gentkId) {
       queryString += `&gentkId=${gentkId}`;
     }
-    if(paymentMethod) {
+    if (paymentMethod) {
       queryString += `&paymentMethod=${paymentMethod}`;
+    }
+    if (giftingAvailable) {
+      queryString += `&giftingAvailable=${giftingAvailable}`;
+    }
+    if (giftingNFT) {
+      queryString += `&giftingNFT=${giftingNFT}`;
     }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
@@ -119,15 +127,14 @@ const WinterCheckout = ({
     }
 
     var url;
-    if(production) {
-      url = "https://checkout.usewinter.com/?" + queryString
+    if (production) {
+      url = "https://checkout.usewinter.com/?" + queryString;
     } else {
-      if(dev) {
+      if (dev) {
         url = "https://dev-checkout.onrender.com/?" + queryString;
       } else {
         url = "https://sandbox-winter-checkout.onrender.com/?" + queryString;
       }
-
     }
 
     setProjectUrl(url);
@@ -149,6 +156,8 @@ const WinterCheckout = ({
     appearance,
     gentkId,
     assetId,
+    giftingAvailable,
+    giftingNFT,
   ]);
 
   return showModal ? (

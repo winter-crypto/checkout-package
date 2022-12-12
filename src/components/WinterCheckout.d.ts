@@ -20,6 +20,8 @@ declare const WinterCheckout: React.FC<{
   assetId?: string;
   paymentMethod?: string;
   appearance?: Record<string, string | number | undefined>;
+  giftingAvailable?: boolean;
+  giftingNFT?: boolean;
   onClose?: () => void;
   onSuccess?: (txId: string, email: string) => void;
 }>;
