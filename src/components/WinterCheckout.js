@@ -26,6 +26,8 @@ const WinterCheckout = ({
   orderSource,
   giftingAvailable,
   giftingNFT,
+  policyId,
+  recaptcha
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -70,7 +72,14 @@ const WinterCheckout = ({
         "contractAddress=" + contractAddress + "&tokenId=" + tokenId;
     } else if (assetId) {
       queryString += "assetID=" + assetId;
+    } else if (policyId) { // Used for jpg primary mints
+      queryString += "policyId=" + policyId;
     }
+
+    if(recaptcha) { // Used for jpg primary mints
+      queryString += "&recaptcha=" + recaptcha;
+    }
+
     if (walletAddress) {
       queryString += "&walletAddress=" + walletAddress;
     }

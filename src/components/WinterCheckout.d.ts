@@ -24,5 +24,7 @@ declare const WinterCheckout: React.FC<{
   giftingNFT?: boolean;
   onClose?: () => void;
   onSuccess?: (txId: string, email: string) => void;
+  policyId?: string; // Used for jpg primary mints
+  recaptcha?: string; // Used for jpg primary mints
 }>;
 export default WinterCheckout;
