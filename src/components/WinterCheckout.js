@@ -27,7 +27,7 @@ const WinterCheckout = ({
   giftingAvailable,
   giftingNFT,
   policyId,
-  recaptcha
+  recaptcha,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -72,11 +72,13 @@ const WinterCheckout = ({
         "contractAddress=" + contractAddress + "&tokenId=" + tokenId;
     } else if (assetId) {
       queryString += "assetID=" + assetId;
-    } else if (policyId) { // Used for jpg primary mints
+    } else if (policyId) {
+      // Used for jpg primary mints
       queryString += "policyId=" + policyId;
     }
 
-    if(recaptcha) { // Used for jpg primary mints
+    if (recaptcha) {
+      // Used for jpg primary mints
       queryString += "&recaptcha=" + recaptcha;
     }
 
@@ -147,6 +149,15 @@ const WinterCheckout = ({
     }
 
     setProjectUrl(url);
+
+    // Open checkout in new window if payment method is SOL
+    if (paymentMethod === "SOL" && showModal) {
+      window.open(
+        url,
+        "checkout",
+        "height=" + window.innerHeight + ",width=800"
+      );
+    }
   }, [
     onSuccess,
     onClose,
@@ -169,7 +180,7 @@ const WinterCheckout = ({
     giftingNFT,
   ]);
 
-  return showModal ? (
+  return showModal && paymentMethod !== "SOL" ? (
     <div
       dangerouslySetInnerHTML={{
         __html: `<iframe id="winter-checkout" src="${projectUrl}" style="color-scheme: light; position: fixed; top: 0px; bottom: 0px; right: 0px; width: 100%; border: none; margin: 0px; padding: 0px; overflow: hidden; z-index: 999999; height: 100%;" />`,
