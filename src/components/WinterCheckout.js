@@ -122,8 +122,8 @@ const WinterCheckout = ({
     if (giftingNFT) {
       queryString += `&giftingNFT=${giftingNFT}`;
     }
-    if (fa2Address) {
-      queryString += `&fa2Address=${fa2Address}`;
+    if (fa2Address && tokenId) {
+      queryString += `&fa2Address=${fa2Address}&tokenId=${tokenId}`;
     }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
