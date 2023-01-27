@@ -1,6 +1,10 @@
 {
   "name": "@usewinter/checkout",
+<<<<<<< HEAD
   "version": "0.1.39",
+=======
+  "version": "0.1.40",
+>>>>>>> 66e9c559752d26178609d5d49d83ee4b9e26a72d
   "description": "Integrate Winter's NFT checkout with this React component",
   "author": "Evan Fisher",
   "private": false,

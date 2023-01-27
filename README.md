@@ -67,3 +67,10 @@ false if you're testing in sandbox, true when you go live!
 #### showModal
 
 this toggles true / false based on the state of your "Pay with Card" button
+
+How to deploy
+```
+npm run build
+npm version patch 
+npm publish 
+```

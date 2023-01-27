@@ -25,5 +25,7 @@ declare const WinterCheckout: React.FC<{
   fa2Address?: string;
   onClose?: () => void;
   onSuccess?: (txId: string, email: string) => void;
+  policyId?: string; // Used for jpg primary mints
+  recaptcha?: string; // Used for jpg primary mints
 }>;
 export default WinterCheckout;
