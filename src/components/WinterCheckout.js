@@ -26,6 +26,7 @@ const WinterCheckout = ({
   orderSource,
   giftingAvailable,
   giftingNFT,
+  fa2Address,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -110,6 +111,9 @@ const WinterCheckout = ({
     if (giftingNFT) {
       queryString += `&giftingNFT=${giftingNFT}`;
     }
+    if (fa2Address) {
+      queryString += `&fa2Address=${fa2Address}`;
+    }
     if (extraMintParams) {
       queryString += `&extraMintParams=${encodeURIComponent(
         JSON.stringify(extraMintParams)
@@ -158,6 +162,7 @@ const WinterCheckout = ({
     assetId,
     giftingAvailable,
     giftingNFT,
+    fa2Address,
   ]);
 
   return showModal ? (

@@ -22,6 +22,7 @@ declare const WinterCheckout: React.FC<{
   appearance?: Record<string, string | number | undefined>;
   giftingAvailable?: boolean;
   giftingNFT?: boolean;
+  fa2Address?: string;
   onClose?: () => void;
   onSuccess?: (txId: string, email: string) => void;
 }>;
