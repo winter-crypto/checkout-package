@@ -29,6 +29,8 @@ const WinterCheckout = ({
   fa2Address,
   policyId,
   recaptcha,
+  listingId,
+  contractVersion,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -76,6 +78,9 @@ const WinterCheckout = ({
     } else if (policyId) {
       // Used for jpg primary mints
       queryString += "policyId=" + policyId;
+    }
+    if (listingId && contractVersion) {
+      queryString += `listingId=${listingId}&contractVersion=${contractVersion}`;
     }
 
     if (recaptcha) {
@@ -183,6 +188,8 @@ const WinterCheckout = ({
     giftingAvailable,
     giftingNFT,
     fa2Address,
+    listingId,
+    contractVersion,
   ]);
 
   return showModal && paymentMethod !== "SOL" ? (
