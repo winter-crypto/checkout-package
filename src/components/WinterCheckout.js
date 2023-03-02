@@ -31,6 +31,7 @@ const WinterCheckout = ({
   recaptcha,
   listingId,
   contractVersion,
+  fair,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -148,12 +149,20 @@ const WinterCheckout = ({
 
     var url;
     if (production) {
-      url = "https://checkout.usewinter.com/?" + queryString;
+      if (fair) {
+        url = "https://fair-checkout.onrender.com/?" + queryString;
+      } else {
+        url = "https://checkout.usewinter.com/?" + queryString;
+      }
     } else {
       if (dev) {
         url = "https://dev-checkout.onrender.com/?" + queryString;
       } else {
-        url = "https://sandbox-winter-checkout.onrender.com/?" + queryString;
+        if (fair) {
+          url = "https://fair-checkout-testnet.onrender.com/?" + queryString;
+        } else {
+          url = "https://sandbox-winter-checkout.onrender.com/?" + queryString;
+        }
       }
     }
 
@@ -190,6 +199,7 @@ const WinterCheckout = ({
     fa2Address,
     listingId,
     contractVersion,
+    fair,
   ]);
 
   return showModal && paymentMethod !== "SOL" ? (

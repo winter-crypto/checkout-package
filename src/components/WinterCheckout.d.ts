@@ -29,5 +29,6 @@ declare const WinterCheckout: React.FC<{
   recaptcha?: string; // Used for jpg primary mints
   listingId?: string; // Used for fxhash secondary
   contractVersion?: string; // Used for fxhash secondary
+  fair?: boolean; // Used for Fair's custom checkout
 }>;
 export default WinterCheckout;
