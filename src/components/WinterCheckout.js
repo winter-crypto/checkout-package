@@ -32,6 +32,7 @@ const WinterCheckout = ({
   listingId,
   contractVersion,
   fair,
+  additionalPurchaseParams,
 }) => {
   const [projectUrl, setProjectUrl] = useState("");
 
@@ -144,6 +145,11 @@ const WinterCheckout = ({
     if (appearance) {
       queryString += `&appearance=${encodeURIComponent(
         JSON.stringify(appearance)
+      )}`;
+    }
+    if (additionalPurchaseParams) {
+      queryString += `&additionalPurchaseParams=${encodeURIComponent(
+        JSON.stringify(additionalPurchaseParams)
       )}`;
     }
 

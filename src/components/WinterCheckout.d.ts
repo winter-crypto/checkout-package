@@ -30,5 +30,6 @@ declare const WinterCheckout: React.FC<{
   listingId?: string; // Used for fxhash secondary
   contractVersion?: string; // Used for fxhash secondary
   fair?: boolean; // Used for Fair's custom checkout
+  additionalPurchaseParams?: object; // Used for fxhash's new contract
 }>;
 export default WinterCheckout;
